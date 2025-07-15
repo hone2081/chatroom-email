@@ -3,10 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>聊天室</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    #chat-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 300px;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+    }
+    #msg-input {
+      width: 70%;
+      padding: 8px;
+    }
+    #send-btn {
+      padding: 8px 16px;
+    }
+  </style>
 </head>
 <body>
-  <!-- 測試修改 -->
-  <h1>歡迎來到聊天室</h1>
-  <p>這是我的網站首頁。</p>
+  <h1>聊天室</h1>
+  <div id="chat-box"></div>
+  <input type="text" id="msg-input" placeholder="輸入訊息">
+  <button id="send-btn">送出</button>
+
+  <script>
+    const chatBox = document.getElementById('chat-box');
+    const msgInput = document.getElementById('msg-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    sendBtn.addEventListener('click', () => {
+      const text = msgInput.value.trim();
+      if (text !== '') {
+        const p = document.createElement('p');
+        p.textContent = text;
+        chatBox.appendChild(p);
+        msgInput.value = '';
+      }
+    });
+  </script>
 </body>
 </html>
